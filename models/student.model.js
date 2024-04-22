@@ -1,19 +1,14 @@
-module.exports = mongoose => {
-  var schema = mongoose.Schema(
-    {
-      name: String,
-      course: String,
-      registered: Boolean,
-    },
-    { timestamps: true }
-  );
+const mongoose = require('mongoose');
 
-  schema.method("toJSON", function () {
-    const { __v, _id, ...object } = this.toObject();
-    object.id = _id;
-    return object;
-  });
+const studentSchema = mongoose.Schema(
+  {
+    name: String,
+    course: String,
+    registered: Boolean,
+  },
+  { timestamps: true }
+);
 
-  const Student = mongoose.model("student", schema);
-  return Student;
-};
+const Student = mongoose.model('Student', studentSchema);
+
+module.exports = Student;

@@ -1,7 +1,8 @@
 const express = require("express");
-
+const router = require("./routes/student.routes")
 const app = express();
-
+app.use(express.json())
+app.use("/api/students", router);
 const logger = require("morgan");
 
 const PORT = process.env.PORT || 4002;
