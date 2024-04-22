@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const Student = require('../models/student.model.js');
 const {getStudents, getStudent, createStudent, updateStudent, deleteStudent} = require('../controllers/user.controller.js');
 
 router.get('/', getStudents);
