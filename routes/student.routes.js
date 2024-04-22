@@ -1,12 +1,15 @@
-module.exports = app => {
-  const students = require("../controllers/student.controller.js");
-  let router = require("express").Router();
+const express = require('express');
+const router = express.Router();
+const Student = require('../models/student.model.js');
+const {getStudents, getStudent, createStudent, updateStudent, deleteStudent} = require('../controllers/user.controller.js');
 
-  // Create a new Student
-  router.post("/", students.create);
+router.get('/', getStudents);
 
-  // Retrieve all Students
-  router.get("/", students.findAll);
+router.get('/:id', getStudent);
 
-  app.use("/api/students", router);
-};
+router.post('/', createStudent);
+//mettre à jour utilisateur
+router.put('/:id', updateStudent),
+//Supprimer utilisateur
+router.delete('/:id', deleteStudent);
+module.exports = router;
